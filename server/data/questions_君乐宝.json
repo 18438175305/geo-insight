@@ -1,0 +1,459 @@
+{
+  "brand_name": "君乐宝",
+  "competitors": [
+    "伊利",
+    "光明",
+    "飞鹤",
+    "蒙牛"
+  ],
+  "generated_at": "2026-05-22T16:34:52.869710",
+  "question_pairs": [
+    {
+      "id": "qp_official_site_f0e8c93e25a5_block_000",
+      "block_id": "official_site_f0e8c93e25a5_block_000",
+      "brand_name": "君乐宝",
+      "competitors": [
+        "伊利",
+        "光明",
+        "飞鹤",
+        "蒙牛"
+      ],
+      "primary_question": "800克装的婴幼儿配方奶粉有哪些品牌可以选择？",
+      "question_type": "推荐问询",
+      "target_entity": "婴幼儿配方奶粉",
+      "rewritten_questions": [
+        "市面上有哪些婴幼儿配方奶粉可以选？",
+        "哪种品牌的婴幼儿配方奶粉效果最好？",
+        "如果宝宝有消化不良的情况，应该选择哪种婴幼儿配方奶粉？",
+        "遇到宝宝营养不足的问题时，通常会推荐使用哪种婴幼儿配方奶粉？",
+        "最近想给宝宝换一款奶粉，有没有好的推荐？",
+        "哪种婴幼儿配方奶粉适合800克装的包装？"
+      ],
+      "entity_tags": [
+        "优萃宝爱婴幼儿配方奶粉",
+        "君乐宝",
+        "优萃婴幼儿配方奶粉",
+        "诠适爱婴幼儿配方奶粉",
+        "旗帜婴幼儿配方奶粉",
+        "乐臻婴幼儿配方奶粉",
+        "小小鲁班诠力爱儿童配方奶粉"
+      ],
+      "relation_types": [
+        "属于"
+      ],
+      "source_text": "",
+      "evaluation_metrics": {
+        "brand_leak_score": 0.0,
+        "entity_coverage": 0.5,
+        "completeness": 1.0,
+        "competitor_relevance": 1.0,
+        "objective_score": 81.7,
+        "naturalness": 9.0,
+        "meaningfulness": 8.0,
+        "clarity": 10.0,
+        "no_ambiguity": 10.0,
+        "brief_reason": "问题自然流畅，有意义且清晰，没有歧义。",
+        "subjective_score": 92.5,
+        "total_score": 88.18
+      },
+      "created_at": "2026-05-22T15:54:14.308002"
+    },
+    {
+      "id": "qp_official_site_f0e8c93e25a5_block_000_1",
+      "block_id": "official_site_f0e8c93e25a5_block_000",
+      "brand_name": "君乐宝",
+      "competitors": [
+        "伊利",
+        "光明",
+        "飞鹤",
+        "蒙牛"
+      ],
+      "primary_question": "什么奶粉含有活性免疫球蛋白成分？",
+      "question_type": "成分问询",
+      "target_entity": "婴幼儿配方奶粉",
+      "rewritten_questions": [
+        "哪种奶粉含有活性免疫球蛋白成分？",
+        "活性免疫球蛋白成分哪个品牌的奶粉效果最好？",
+        "针对增强免疫力，哪种奶粉是最佳选择？",
+        "一般遇到免疫力低下问题推荐什么类型的奶粉？",
+        "求推荐一款含有活性免疫球蛋白成分的奶粉。",
+        "最近免疫力下降，想找一款合适的奶粉，哪种好？"
+      ],
+      "entity_tags": [
+        "优萃宝爱婴幼儿配方奶粉",
+        "君乐宝",
+        "优萃婴幼儿配方奶粉",
+        "诠适爱婴幼儿配方奶粉",
+        "旗帜婴幼儿配方奶粉",
+        "乐臻婴幼儿配方奶粉",
+        "小小鲁班诠力爱儿童配方奶粉"
+      ],
+      "relation_types": [
+        "属于"
+      ],
+      "source_text": "",
+      "evaluation_metrics": {
+        "brand_leak_score": 0.0,
+        "entity_coverage": 0.5,
+        "completeness": 1.0,
+        "competitor_relevance": 1.0,
+        "objective_score": 81.7,
+        "naturalness": 9.0,
+        "meaningfulness": 8.0,
+        "clarity": 10.0,
+        "no_ambiguity": 10.0,
+        "brief_reason": "问题自然流畅，有意义且清晰，没有歧义。",
+        "subjective_score": 92.5,
+        "total_score": 88.18
+      },
+      "created_at": "2026-05-22T15:54:35.375528"
+    },
+    {
+      "id": "qp_official_site_f0e8c93e25a5_block_000_2",
+      "block_id": "official_site_f0e8c93e25a5_block_000",
+      "brand_name": "君乐宝",
+      "competitors": [
+        "伊利",
+        "光明",
+        "飞鹤",
+        "蒙牛"
+      ],
+      "primary_question": "哪种奶粉可以促进宝宝脑力和体力的全面发展？",
+      "question_type": "营养问询",
+      "target_entity": "婴幼儿配方奶粉",
+      "rewritten_questions": [
+        "哪种奶粉能有效促进宝宝的智力和体格发育？",
+        "对于宝宝脑力和体力的发展，哪种奶粉效果最佳？",
+        "针对促进宝宝脑力和体力全面发展的需求，有什么好的奶粉推荐吗？",
+        "如果想让宝宝健康成长，应该选择哪种奶粉来帮助他们发展智力和体质？",
+        "最近听说有些奶粉特别适合促进宝宝脑力和体力发展，你们知道哪种比较好吗？"
+      ],
+      "entity_tags": [
+        "优萃宝爱婴幼儿配方奶粉",
+        "君乐宝",
+        "优萃婴幼儿配方奶粉",
+        "诠适爱婴幼儿配方奶粉",
+        "旗帜婴幼儿配方奶粉",
+        "乐臻婴幼儿配方奶粉",
+        "小小鲁班诠力爱儿童配方奶粉"
+      ],
+      "relation_types": [
+        "属于"
+      ],
+      "source_text": "",
+      "evaluation_metrics": {
+        "brand_leak_score": 0.0,
+        "entity_coverage": 0.5,
+        "completeness": 0.9000000000000001,
+        "competitor_relevance": 1.0,
+        "objective_score": 81.7,
+        "naturalness": 6.0,
+        "meaningfulness": 7.0,
+        "clarity": 8.0,
+        "no_ambiguity": 8.0,
+        "brief_reason": "问题略显书面化，但有意义且较为清晰，没有明显歧义。",
+        "subjective_score": 72.5,
+        "total_score": 76.18
+      },
+      "created_at": "2026-05-22T15:54:56.537401"
+    },
+    {
+      "id": "qp_official_site_f0e8c93e25a5_block_000_3",
+      "block_id": "official_site_f0e8c93e25a5_block_000",
+      "brand_name": "君乐宝",
+      "competitors": [
+        "伊利",
+        "光明",
+        "飞鹤",
+        "蒙牛"
+      ],
+      "primary_question": "如果想要给宝宝选择一款含DHA的奶粉，有哪些品牌可以考虑？",
+      "question_type": "成分问询",
+      "target_entity": "婴幼儿配方奶粉",
+      "rewritten_questions": [
+        "有哪些奶粉含有DHA成分适合宝宝食用？",
+        "在选择奶粉时，哪些品牌能提供较好的DHA补充？",
+        "宝宝需要补充DHA时，应该选用哪种类型的奶粉？",
+        "通常遇到宝宝需要补DHA的情况，你会推荐哪种奶粉？",
+        "我最近在为宝宝挑选含DHA的奶粉，有什么好的建议吗？"
+      ],
+      "entity_tags": [
+        "优萃宝爱婴幼儿配方奶粉",
+        "君乐宝",
+        "优萃婴幼儿配方奶粉",
+        "诠适爱婴幼儿配方奶粉",
+        "旗帜婴幼儿配方奶粉",
+        "乐臻婴幼儿配方奶粉",
+        "小小鲁班诠力爱儿童配方奶粉"
+      ],
+      "relation_types": [
+        "属于"
+      ],
+      "source_text": "",
+      "evaluation_metrics": {
+        "brand_leak_score": 0.0,
+        "entity_coverage": 0.5,
+        "completeness": 1.0,
+        "competitor_relevance": 1.0,
+        "objective_score": 81.7,
+        "naturalness": 9.0,
+        "meaningfulness": 9.0,
+        "clarity": 10.0,
+        "no_ambiguity": 10.0,
+        "brief_reason": "问题自然流畅，符合用户真实提问习惯；表达清晰完整，意图明确；没有歧义或语法问题。",
+        "subjective_score": 95.0,
+        "total_score": 89.68
+      },
+      "created_at": "2026-05-22T15:55:17.714364"
+    }
+  ],
+  "evaluation_summary": {
+    "total_blocks": 1,
+    "total_questions": 4,
+    "total_rewritten_questions": 22,
+    "avg_questions_per_block": 4.0,
+    "avg_rewrites_per_question": 5.5,
+    "avg_objective_score": 81.7,
+    "avg_subjective_score": 88.12,
+    "avg_total_score": 85.56,
+    "brand_leak_rate": 0.0,
+    "questions_by_type": {
+      "推荐问询": 1,
+      "成分问询": 2,
+      "营养问询": 1
+    }
+  },
+  "geo_summary": {
+    "total_blocks": 1,
+    "total_questions": 26,
+    "total_analyses": 26,
+    "platform_stats": {
+      "qwen": {
+        "mentioned_count": 18,
+        "total_count": 26,
+        "total_mention_count": 21,
+        "avg_rank": 3.7222222222222223,
+        "avg_sentiment": 0.0,
+        "authority_avg": 3.8461538461538463,
+        "mention_rate": 0.6923076923076923,
+        "competitors_found": "[\"汤臣倍健\", \"光明\", \"伊利金领冠\", \"贝因美\", \"澳洲Comvita\", \"Good Health\", \"伊利\", \"完达山\", \"康恩贝\", \"蒙牛\", \"飞鹤\"]",
+        "competitor_ranks_avg": "{\"飞鹤\": 2.5833333333333335, \"伊利金领冠\": 3.0, \"贝因美\": 3.0, \"完达山\": 4.0, \"伊利\": 1.1578947368421053, \"光明\": 2.0, \"蒙牛\": 3.466666666666667, \"汤臣倍健\": 1.0, \"康恩贝\": 2.0, \"澳洲Comvita\": 3.0, \"Good Health\": 4.0}",
+        "brand_website_cited_count": 0,
+        "brand_citations": [
+          "https://spcjs.samr.gov.cn"
+        ],
+        "competitor_citations_summary": {},
+        "mention_positions": "{\"prominent\": 5, \"early\": 1, \"middle\": 12, \"late\": 0, \"not_mentioned\": 8}",
+        "sentiment_distribution": "{\"positive\": 0, \"neutral\": 18, \"negative\": 0}",
+        "competitor_details_summary": "{\"飞鹤\": {\"mention_count\": 24, \"avg_rank\": 2.5833333333333335, \"ranks\": [1, 2, 2, 3, 3, 1, 1, 2, 3, 3, 3, 3, 4, 3, 3, 4, 3, 3, 1, 3, 1, 3, 4, 3], \"sentiments\": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \"avg_sentiment\": 0.0}, \"伊利金领冠\": {\"mention_count\": 2, \"avg_rank\": 3.0, \"ranks\": [2, 4], \"sentiments\": [0, 0], \"avg_sentiment\": 0.0}, \"贝因美\": {\"mention_count\": 1, \"avg_rank\": 3.0, \"ranks\": [3], \"sentiments\": [0], \"avg_sentiment\": 0.0}, \"完达山\": {\"mention_count\": 1, \"avg_rank\": 4.0, \"ranks\": [4], \"sentiments\": [0], \"avg_sentiment\": 0.0}, \"伊利\": {\"mention_count\": 19, \"avg_rank\": 1.1578947368421053, \"ranks\": [1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1], \"sentiments\": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \"avg_sentiment\": 0.0}, \"光明\": {\"mention_count\": 10, \"avg_rank\": 2.0, \"ranks\": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], \"sentiments\": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \"avg_sentiment\": 0.0}, \"蒙牛\": {\"mention_count\": 15, \"avg_rank\": 3.466666666666667, \"ranks\": [4, 4, 3, 4, 2, 4, 4, 2, 4, 2, 4, 4, 3, 4, 4], \"sentiments\": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], \"avg_sentiment\": 0.0}, \"汤臣倍健\": {\"mention_count\": 1, \"avg_rank\": 1.0, \"ranks\": [1], \"sentiments\": [0], \"avg_sentiment\": 0.0}, \"康恩贝\": {\"mention_count\": 1, \"avg_rank\": 2.0, \"ranks\": [2], \"sentiments\": [0], \"avg_sentiment\": 0.0}, \"澳洲Comvita\": {\"mention_count\": 1, \"avg_rank\": 3.0, \"ranks\": [3], \"sentiments\": [0], \"avg_sentiment\": 0.0}, \"Good Health\": {\"mention_count\": 1, \"avg_rank\": 4.0, \"ranks\": [4], \"sentiments\": [0], \"avg_sentiment\": 0.0}}",
+        "citation_types_summary": {
+          "其他": 1
+        },
+        "answer_samples": [
+          "目前在中国大陆市场，**800克装婴幼儿配方奶粉已非主流规格**。自2018年配方注册制全面实施后，多数国行品牌已将标准罐装统一调整为**900克**，以提升性价比并符合新国标包装规范。不过，800克装仍存在于以下场景：\n- 部分海外原版（欧洲、澳洲等）\n- 跨境电商渠道\n- 品牌老包装清仓或特定区域版本\n- 部分国产品牌的特定系列/促销装\n\n以下为您梳理**可能提供800克规格的品牌及系列**（仅供参考，实际库存随渠道、批次、产地动态变化）：\n\n### 🔹 国产品牌（国行版）\n| 品牌 | 常见系列 | 备注 |\n|------|----------|------|\n| 飞鹤 | 星飞帆、臻稚、蓓舒焕 | 部分线下渠道或早期批次保留800g，新国标后多已切换900g |\n| 君乐宝 | 乐铂、优萃、至臻 | 部分区域版本或母婴店专供装为800g |\n| 伊利金领冠 | 珍护、塞纳牧、育护 | 老包装或特定活动装偶见800g |\n| 贝因美 | 爱加、可睿欣、菁爱 | 部分系列仍提供800g规格 |\n| 完达山 | 亲蓓、元乳、安力聪 | 东北区域线下渠道较常见800g |\n\n### ",
+          "选择婴幼儿配方奶粉需结合宝宝月龄、体质、喂养方式及儿科医生建议。中国对婴幼儿配方奶粉实行**严格注册管理制度**，所有合法在国内销售的产品必须通过国家市场监督管理总局审批，包装上须标注`国食注字YP+8位数字`。以下按科学分类为您梳理市面主流选择，供参考（不替代专业医疗建议）：\n\n---\n### 📌 一、按适用月龄分段（国标GB 10765/10767/10769）\n| 段数 | 适用月龄 | 营养特点 |\n|------|----------|----------|\n| **1段** | 0～6个月 | 模拟母乳，蛋白质比例低、脂肪易消化，铁含量适中 |\n| **2段** | 6～12个月 | 增加铁、钙、DHA等，适应辅食添加期 |\n| **3段** | 12～36个月 | 侧重全面营养支持，部分添加益生元/益生菌/乳铁蛋白等 |\n> 注：部分品牌设4段（3岁以上），但3岁后饮食应以三餐为主，奶粉仅作补充。\n\n---\n### 🧪 二、按配方类型分类\n| 类型 | 适用情况 | 注意事项 |\n|------|----------|----------|\n| **普通牛乳基配方** |",
+          "关于“哪种品牌的婴幼儿配方奶粉效果最好”，需要明确一个核心原则：**婴幼儿配方奶粉没有绝对的“最好”，只有“最适合”**。\n\n### 📌 为什么没有“最好”的品牌？\n1. **国家标准统一**：在中国合法销售的婴幼儿配方奶粉（0-36月龄）必须严格符合《食品安全国家标准 婴儿配方食品》（GB 10765-2021）等法规，基础营养素（蛋白质、脂肪、碳水化合物、维生素、矿物质等）的含量和比例均有强制要求，**所有合规产品都能满足健康婴儿正常生长发育的基本需求**。\n2. **个体差异显著**：宝宝的消化吸收能力、过敏体质、肠道菌群、早产/低体重等情况各不相同，对同一款奶粉的反应可能差异很大。\n3. **“效果”取决于适配与喂养**：奶粉的“效果”主要体现在宝宝食用后体重增长正常、排便规律、睡眠安稳、无过敏或不适。这更多取决于是否选对类型、冲调是否规范、喂养是否规律，而非品牌本身。\n\n### 🔍 如何科学选择？\n| 关注维度 | 建议 |\n|----------|------|\n| **基础合规** | 认准国家市场监督管理总局“婴幼儿配方乳粉产品配方注册”编号（国食注字YP…），可在官网"
+        ]
+      }
+    },
+    "chart_paths": {
+      "mention_rate": "output/charts/platform_mention_rate.png",
+      "rank_rates": "output/charts/platform_rank_rates.png",
+      "sentiment": "output/charts/platform_sentiment.png",
+      "visibility_score": "output/charts/platform_visibility_score.png",
+      "citation": "output/charts/platform_citation_analysis.png"
+    },
+    "recommendations": [
+      {
+        "category": "核心指标",
+        "action": "- 提及率：69.2%",
+        "priority": "中",
+        "reason": "",
+        "expected_effect": ""
+      },
+      {
+        "category": "各平台详情",
+        "action": "- 通义千问: 提及=True, 排名=3, 情感=0.0",
+        "priority": "中",
+        "reason": "",
+        "expected_effect": ""
+      },
+      {
+        "category": "内容优化、引用优化、品牌曝光、平台策略等",
+        "action": "针对性的改进措施",
+        "priority": "高/中/低",
+        "reason": "当前存在的具体问题",
+        "expected_effect": "改进后预计能达到的效果"
+      },
+      {
+        "category": "建议1：内容优化",
+        "priority": "高",
+        "reason": "品牌提及率不足，仅69.2%的平台提及了品牌",
+        "action": "增加品牌在行业内容中的曝光度，发布更多高质量的行业分析文章",
+        "expected_effect": "预计提及率提升至60%以上"
+      },
+      {
+        "category": "建议2：引用优化",
+        "priority": "中",
+        "reason": "品牌网站被引用次数较少",
+        "action": "提升官网内容质量，增加权威性和可信度",
+        "expected_effect": "品牌网站引用率提升30%"
+      },
+      {
+        "category": "优化建议生成",
+        "action": "```plaintext",
+        "priority": "中",
+        "reason": "",
+        "expected_effect": ""
+      },
+      {
+        "category": "建议1：内容优化",
+        "priority": "高",
+        "reason": "品牌提及率不足，仅69.2%的平台提及了品牌",
+        "action": "增加品牌在行业内容中的曝光度，发布更多高质量的行业分析文章，与行业内知名媒体合作，提高品牌影响力。",
+        "expected_effect": "预计提及率提升至75%以上，提高品牌知名度。"
+      },
+      {
+        "category": "建议2：引用优化",
+        "priority": "中",
+        "reason": "品牌网站被引用次数较少，目前为0次引用。",
+        "action": "优化官网内容，确保信息准确、有价值；通过SEO优化提升网站搜索引擎排名；邀请行业内专业人士撰写关于品牌的高质量文章并进行分享。",
+        "expected_effect": "品牌网站引用率提升50%，增强品牌权威性。"
+      },
+      {
+        "category": "建议3：品牌曝光",
+        "priority": "高",
+        "reason": "品牌在多个平台上的平均排名较高，但未达到行业领先水平。",
+        "action": "加大社交媒体宣传力度，定期发布与产品相关的内容，提高用户互动频率；利用KOL或网红进行品牌推广，扩大品牌覆盖范围。",
+        "expected_effect": "品牌在多个平台上的平均排名提升至第2位，提高品牌曝光度。"
+      },
+      {
+        "category": "建议4：平台策略",
+        "priority": "中",
+        "reason": "平台策略不够多元化，主要集中在少数几个平台上。",
+        "action": "拓展至更多平台，如知乎、微博、抖音等，利用不同平台的特点制定差异化推广策略。",
+        "expected_effect": "品牌覆盖更多用户群体，增加潜在客户接触机会。"
+      },
+      {
+        "category": "建议5：情感优化",
+        "priority": "中",
+        "reason": "情感分析结果为0，表明品牌正面评价不足。",
+        "action": "加强客户服务，及时回应用户的反馈和投诉，提高服务质量；开展品牌公关活动，积极传播正面的品牌故事。",
+        "expected_effect": "改善用户对品牌的看法，提高品牌好感度和忠诚度。"
+      },
+      {
+        "category": "建议1：内容优化",
+        "priority": "高",
+        "reason": "品牌提及率不足，仅69.2%的平台提及了品牌",
+        "action": "增加品牌在行业内容中的曝光度，发布更多高质量的行业分析文章，与行业内知名媒体合作，提高品牌影响力。",
+        "expected_effect": "预计提及率提升至75%以上，提高品牌知名度。"
+      },
+      {
+        "category": "建议2：引用优化",
+        "priority": "中",
+        "reason": "品牌网站被引用次数较少，目前为0次引用。",
+        "action": "优化官网内容，确保信息准确、有价值；通过SEO优化提升网站搜索引擎排名；邀请行业内专业人士撰写关于品牌的高质量文章并进行分享。",
+        "expected_effect": "品牌网站引用率提升50%，增强品牌权威性。"
+      },
+      {
+        "category": "建议3：品牌曝光",
+        "priority": "高",
+        "reason": "品牌在多个平台上的平均排名较高，但未达到行业领先水平。",
+        "action": "加大社交媒体宣传力度，定期发布与产品相关的内容，提高用户互动频率；利用KOL或网红进行品牌推广，扩大品牌覆盖范围。",
+        "expected_effect": "品牌在多个平台上的平均排名提升至第2位，提高品牌曝光度。"
+      },
+      {
+        "category": "建议4：平台策略",
+        "priority": "中",
+        "reason": "平台策略不够多元化，主要集中在少数几个平台上。",
+        "action": "拓展至更多平台，如知乎、微博、抖音等，利用不同平台的特点制定差异化推广策略。",
+        "expected_effect": "品牌覆盖更多用户群体，增加潜在客户接触机会。"
+      },
+      {
+        "category": "建议5：情感优化",
+        "priority": "中",
+        "reason": "情感分析结果为0，表明品牌正面评价不足。",
+        "action": "",
+        "expected_effect": "改善用户对品牌的看法，提高品牌好感度和忠诚度。"
+      },
+      {
+        "category": "建议1：内容优化",
+        "priority": "高",
+        "reason": "品牌提及率不足，仅69.2%的平台提及了品牌",
+        "action": "增加品牌在行业内容中的曝光度，发布更多高质量的行业分析文章，与行业内知名媒体合作，提高品牌影响力。",
+        "expected_effect": "预计提及率提升至75%以上，提高品牌知名度。"
+      },
+      {
+        "category": "建议2：引用优化",
+        "priority": "中",
+        "reason": "品牌网站被引用次数较少，目前为0次引用。",
+        "action": "优化官网内容，确保信息准确、有价值；通过SEO优化提升网站搜索引擎排名；邀请行业内专业人士撰写关于品牌的高质量文章并进行分享。",
+        "expected_effect": "品牌网站引用率提升50%，增强品牌权威性。"
+      },
+      {
+        "category": "建议3：品牌曝光",
+        "priority": "高",
+        "reason": "品牌在多个平台上的平均排名较高，但未达到行业领先水平。",
+        "action": "加大社交媒体宣传力度，定期发布与产品相关的内容，提高用户互动频率；利用KOL或网红进行品牌推广，扩大品牌覆盖范围。",
+        "expected_effect": "品牌在多个平台上的平均排名提升至第2位，提高品牌曝光度。"
+      },
+      {
+        "category": "建议4：平台策略",
+        "priority": "中",
+        "reason": "平台策略不够多元化，主要集中在少数几个平台上。",
+        "action": "拓展至更多平台，如知乎、微博、抖音等，利用不同平台的特点制定差异化推广策略。",
+        "expected_effect": "品牌覆盖更多用户群体，增加潜在客户接触机会。"
+      },
+      {
+        "category": "建议5：情感优化",
+        "priority": "中",
+        "reason": "情感分析结果为0，表明品牌正面评价不足。",
+        "action": "加强客户服务，及时回应用户的反馈和投诉，提高服务质量；开展品牌公关活动，积极传播正面的品牌故事。",
+        "expected_effect": "改善用户对品牌的看法，提高品牌好感度和忠诚度。 ```plaintext"
+      },
+      {
+        "category": "建议1：内容优化",
+        "priority": "高",
+        "reason": "品牌提及率不足，仅69.2%的平台提及了品牌",
+        "action": "增加品牌在行业内容中的曝光度，发布更多高质量的行业分析文章，与行业内知名媒体合作，提高品牌影响力。",
+        "expected_effect": "预计提及率提升至75%以上，提高品牌知名度。"
+      },
+      {
+        "category": "建议2：引用优化",
+        "priority": "中",
+        "reason": "品牌网站被引用次数较少，目前为0次引用。",
+        "action": "优化官网内容，确保信息准确、有价值；通过SEO优化提升网站搜索引擎排名；邀请行业内专业人士撰写关于品牌的高质量文章并进行分享。",
+        "expected_effect": "品牌网站引用率提升50%，增强品牌权威性。"
+      },
+      {
+        "category": "建议3：品牌曝光",
+        "priority": "高",
+        "reason": "品牌在多个平台上的平均排名较高，但未达到行业领先水平。",
+        "action": "加大社交媒体宣传力度，定期发布与产品相关的内容，提高用户互动频率；利用KOL或网红进行品牌推广，扩大品牌覆盖范围。",
+        "expected_effect": "品牌在多个平台上的平均排名提升至第2位，提高品牌曝光度。"
+      },
+      {
+        "category": "建议4：平台策略",
+        "priority": "中",
+        "reason": "平台策略不够多元化，主要集中在少数几个平台上。",
+        "action": "拓展至更多平台，如知乎、微博、抖音等，利用不同平台的特点制定差异化推广策略。",
+        "expected_effect": "品牌覆盖更多用户群体，增加潜在客户接触机会。"
+      },
+      {
+        "category": "建议5：情感优化",
+        "priority": "中",
+        "reason": "情感分析结果为0，表明品牌正面评价不足。",
+        "action": "加强客户服务，及时回应用户的反馈和投诉，提高服务质量；开展品牌公关活动，积极传播正面的品牌故事。",
+        "expected_effect": "改善用户对品牌的看法，提高品牌好感度和忠诚度。"
+      }
+    ],
+    "api_failure_count": 0,
+    "api_failure_errors": []
+  },
+  "statistics": {
+    "total_blocks": 1,
+    "total_questions": 4,
+    "total_rewritten_questions": 22,
+    "brand_leak_rate": 0.0
+  }
+}

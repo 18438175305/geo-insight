@@ -1,0 +1,42 @@
+{
+  "name": "GEO 品牌监测 · LangGraph Multi-Agent 流水线",
+  "entry": "crawl",
+  "nodes": [
+    { "id": "crawl", "label": "多源爬虫", "layer": "数据层", "type": "tool",
+      "desc": "官网 / 知乎 / 小红书 / 白皮书四类爬虫抓取品牌资料，逐篇计算质量分（长度30% + 信息密度30% + 格式40%）。",
+      "artifact": "crawled_cache / batch 文档", "file": "crawlers/" },
+    { "id": "process", "label": "数据处理 Agent", "layer": "数据层", "type": "agent",
+      "desc": "文本清洗（去版权/联系方式/乱码）→ 语义优先分块（100~500 字符），产出批次文件。",
+      "artifact": "batch_output/batch_*.json", "file": "agents/data_processing_agent.py" },
+    { "id": "kg", "label": "KG 抽取（NER+LLM）", "layer": "数据层", "type": "hybrid",
+      "desc": "NER 规则 + jieba 生成候选 → qwen2.5-7B 联合抽取实体/关系 → 置信度≥0.6 过滤 → 跨文档去重。实测单批 155 实体 / 56 关系。",
+      "artifact": "KG 实体/关系/三元组", "file": "kg_extraction/kg_builder.py" },
+    { "id": "index", "label": "向量索引 Agent", "layer": "数据层", "type": "agent",
+      "desc": "Embedding 向量化写入 Milvus（HNSW 索引），建立品牌外部知识库。",
+      "artifact": "external_kb_{品牌}", "file": "agents/vector_index_agent.py" },
+    { "id": "generate", "label": "问题生成 Agent", "layer": "生成层", "type": "agent-loop",
+      "desc": "核心智能体：逐块读取知识库，基于 KG 实体生成「品牌匿名」探针问题。LangGraph block_router 条件边多轮推进；模型为 SFT+GRPO 训练的 Qwen2.5-7B（SFT 8060 条 / GRPO 候选 8371 条）。",
+      "artifact": "主问题 + 类型 + 目标实体", "file": "agents/question_generation_agent.py" },
+    { "id": "objective", "label": "客观评估过滤", "layer": "生成层", "type": "oracle",
+      "desc": "规则计算：品牌泄露检测 / KG 实体覆盖率 / 完整性 / 竞品关联度，不达标问题直接过滤。",
+      "artifact": "objective_filtered_questions", "file": "agents/evaluation_agent.py" },
+    { "id": "rewrite", "label": "问题改写 Agent", "layer": "生成层", "type": "agent",
+      "desc": "对主问题做多样化改写（实测平均 5.4 条/问），模拟真实用户的不同问法。",
+      "artifact": "rewritten_questions", "file": "agents/question_rewrite_agent.py" },
+    { "id": "subjective", "label": "主观评估过滤", "layer": "生成层", "type": "oracle",
+      "desc": "LLM 主观评估：自然度 / 有意义性（1-10 分），双门禁后产出最终问题对。华为实测：客观 86.97 / 主观 80.38 / 综合 83.02。",
+      "artifact": "question_pairs.json", "file": "agents/evaluation_agent.py" },
+    { "id": "geo", "label": "GEO 追踪 Agent", "layer": "分析层", "type": "agent",
+      "desc": "将问题真实投放至 DeepSeek / 通义千问 / Kimi / 豆包 / 元宝五大平台，LLM 精确分析回答的提及 / 排名 / 位置 / 引用 / 情感五维指标。",
+      "artifact": "geo_analysis_{品牌}", "file": "agents/geo_tracking_agent.py" },
+    { "id": "report", "label": "报告与沉淀", "layer": "分析层", "type": "output",
+      "desc": "可见性评分（提及40 + 排名10-30 + 位置15 + 引用权威 + 情感5-10）、5 类可视化图表、优化建议，结构化数据入 Milvus 持久化。",
+      "artifact": "charts_*/ + 建议 + Milvus", "file": "utils/geo_chart.py" }
+  ],
+  "edges": [
+    ["crawl", "process"], ["process", "kg"], ["kg", "index"], ["index", "generate"],
+    ["generate", "objective"], ["objective", "generate", "下一知识块（条件循环）"],
+    ["objective", "rewrite", "通过过滤"], ["rewrite", "subjective"],
+    ["subjective", "geo"], ["geo", "report"]
+  ]
+}
