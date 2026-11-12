@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>GEO Insight 技术文档</title>
+<style>
+@page { size: A4; margin: 18mm 16mm; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Microsoft YaHei",sans-serif;font-size:10.5pt;line-height:1.75;color:#1e293b}
+h1{font-size:22pt;color:#0f172a;margin:0 0 6px}
+h2{font-size:14pt;color:#312e81;border-left:5px solid #4f46e5;padding-left:10px;margin:26px 0 10px;page-break-after:avoid}
+h3{font-size:11.5pt;color:#0f172a;margin:16px 0 6px;page-break-after:avoid}
+p{margin:6px 0;text-align:justify}
+ul,ol{margin:6px 0 6px 22px}
+li{margin:3px 0}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:9.5pt}
+th{background:#eef2ff;color:#312e81;text-align:left}
+th,td{border:1px solid #cbd5e1;padding:6px 9px;vertical-align:top}
+code{font-family:Consolas,monospace;background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:9pt}
+pre{background:#0f172a;color:#a5f3fc;padding:12px 14px;border-radius:8px;font-size:8.8pt;line-height:1.6;overflow-x:auto;margin:10px 0;white-space:pre-wrap}
+pre b{color:#6ee7b7;font-weight:normal}
+.cover{height:245mm;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;page-break-after:always}
+.cover .t{font-size:30pt;font-weight:800;color:#312e81;letter-spacing:2px}
+.cover .s{font-size:14pt;color:#64748b;margin-top:10px}
+.cover .meta{margin-top:60px;font-size:11pt;color:#475569;line-height:2.2}
+.tag{display:inline-block;background:#eef2ff;color:#4338ca;border-radius:14px;padding:1px 10px;font-size:9pt;margin:0 3px}
+img{max-width:100%;border:1px solid #e2e8f0;border-radius:8px;margin:8px 0}
+.toc{columns:2;font-size:10pt}
+.toc div{margin:4px 0;color:#334155}
+.pagebreak{page-break-before:always}
+.note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;font-size:9.5pt;margin:8px 0}
+.kpi{display:flex;gap:8px;margin:10px 0}
+.kpi div{flex:1;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px;text-align:center;font-size:9pt}
+.kpi b{display:block;font-size:13pt;color:#4f46e5}
+</style></head><body>
+
+<div class="cover">
+  <div style="font-size:13pt;color:#4f46e5;letter-spacing:6px;margin-bottom:18px">全国高校 AI Web 开发挑战赛</div>
+  <div class="t">GEO Insight</div>
+  <div class="s">AI 品牌可见性监测平台 · 技术文档</div>
+  <div style="width:420px;height:3px;background:linear-gradient(90deg,#4f46e5,#0891b2);margin:30px 0"></div>
+  <div class="meta">
+    技术栈：React 18 · TypeScript · Vite · Tailwind CSS · ECharts · Express SSE<br>
+    AI 能力：大模型流式生成 · 品牌泄露安全护栏 · Agent 编排可视化 · 真实 RAG 产物数据<br>
+    队伍信息：【填写：队伍名 / 成员 / 学校 / 组别】<br>
+    文档版本：v1.0（2026-11）
+  </div>
+</div>
+
+<h2>目录</h2>
+<div class="toc">
+<div>1. 项目概述</div><div>　1.1 背景与问题定义</div><div>　1.2 解决方案与核心价值</div>
+<div>　1.3 作品形态与技术栈总览</div><div>2. 需求分析</div><div>　2.1 用户画像与用户故事</div>
+<div>　2.2 功能需求清单</div><div>　2.3 非功能需求</div><div>3. 系统架构设计</div>
+<div>　3.1 总体架构</div><div>　3.2 前端工程架构</div><div>　3.3 AI 接入层设计</div>
+<div>　3.4 数据流设计</div><div>4. AI 技术方案（重点）</div><div>　4.1 大模型接入：双模式设计</div>
+<div>　4.2 SSE 流式交互链路</div><div>　4.3 AI 安全：品牌泄露双重护栏</div>
+<div>　4.4 Agent 编排可视化</div><div>　4.5 与训练模型的衔接（SFT/GRPO）</div>
+<div>5. 核心功能实现</div><div>　5.1 监测总览仪表盘</div><div>　5.2 品牌体检（流式生成）</div>
+<div>　5.3 探针问题库</div><div>　5.4 AI 回答洞察</div><div>　5.5 智能体编排页</div>
+<div>6. 测试与部署</div><div>　6.1 构建与代码分割</div><div>　6.2 接口联调验证记录</div>
+<div>　6.3 部署指引</div><div>7. 创新点说明</div><div>8. 总结与展望</div>
+</div>
+
+<div class="pagebreak"></div>
+<h2>1. 项目概述</h2>
+<h3>1.1 背景与问题定义</h3>
+<p>搜索引擎时代有 SEO（搜索引擎优化），生成式 AI 时代对应出现了 <b>GEO（Generative Engine Optimization，生成式引擎优化）</b>：品牌方需要知道——当用户向 DeepSeek、通义千问、Kimi、豆包、元宝提问"什么手机拍照好""什么奶粉含有乳铁蛋白"时，AI 的回答里<b>会不会提到我的品牌？排第几？情感是正还是负？引用了哪些信息源？</b></p>
+<p>度量这件事的第一步，是获得一套高质量的<b>"探针问题集"</b>。真实用户提问属于平台私有资产且涉及隐私，无法获取；人工编写则规模受限、且极易带入引导性（如"×× 咖啡豆怎么样"直接泄露品牌，测不出"无引导联想"）。我们自研的 GEO 品牌监测系统用 Multi-Agent 流水线解决了探针问题的大规模自动生产：<b>刻意隐藏品牌名，仅以产品特征、功效、场景等客观描述构建问题</b>，再把问题真实投放到五大 AI 平台做可见性分析。</p>
+<p>本作品是该系统的 Web 前端应用：<b>把"AI 时代的品牌体检"变成一个可视化、可交互、可演示的 Web 产品</b>。</p>
+<h3>1.2 解决方案与核心价值</h3>
+<table>
+<tr><th style="width:32%">能力</th><th>说明</th></tr>
+<tr><td>探针问题生成</td><td>SSE 流式生成品牌匿名问题；前端后端双保险的<b>品牌泄露安全护栏</b>（原名/拼音/英文变体检测）</td></tr>
+<tr><td>可见性仪表盘</td><td>提及率、排名分布（第一/前三/前五）、情感倾向、五平台矩阵——全部来自真实运行数据</td></tr>
+<tr><td>AI 回答洞察</td><td>平台回答原文展示 + 品牌与竞品"同场排名"解剖，一眼看清竞争格局</td></tr>
+<tr><td>智能体编排可视化</td><td>LangGraph 8-Agent 流水线交互图，节点可点击查看职责/真实产物/实现文件</td></tr>
+</table>
+<h3>1.3 作品形态与技术栈总览</h3>
+<div class="kpi">
+<div><b>5</b>业务页面</div><div><b>2</b>AI双模式</div><div><b>367+26</b>条真实分析记录</div><div><b>50</b>条真实探针问题对</div><div><b>0</b>人工编造数据</div>
+</div>
+<p>技术栈：<span class="tag">React 18</span><span class="tag">TypeScript</span><span class="tag">Vite 5</span><span class="tag">Tailwind CSS</span><span class="tag">React Router 6</span><span class="tag">ECharts 5</span><span class="tag">Express</span><span class="tag">SSE</span><span class="tag">OpenAI 兼容 API</span></p>
+<p>选型理由：比赛要求"前端为主、后端仅作 AI 接入层"。React 18 + Vite 是当前 AI Web 应用最主流的工程基座（Vercel AI SDK 生态默认栈）；TypeScript 全覆盖保证接口契约；Tailwind 保证视觉一致性；ECharts 通过 dynamic import 懒加载避免拖累首屏；Express 以最小代价承担 SSE 与 LLM 代理职责。</p>
+
+<h2>2. 需求分析</h2>
+<h3>2.1 用户画像与用户故事</h3>
+<table>
+<tr><th>用户</th><th>用户故事</th></tr>
+<tr><td>品牌市场/PR 负责人</td><td>"我想 3 分钟内看清我的品牌在主流 AI 平台的可见性现状，并拿到可以落地的优化方向。"</td></tr>
+<tr><td>GEO 顾问/代理商</td><td>"我需要向客户演示'探针问题'如何生成、为什么它不会泄露品牌名、AI 平台到底怎么回答。"</td></tr>
+<tr><td>智能体开发者</td><td>"我想直观理解这条 Multi-Agent 流水线每个节点的职责与产物，用于方案讲解。"</td></tr>
+</table>
+<h3>2.2 功能需求清单</h3>
+<ol>
+<li><b>监测总览</b>：品牌切换、核心指标（提及率/平均排名/综合评分/泄露率）、排名分布图、平台矩阵、情感分布；</li>
+<li><b>品牌体检</b>：输入品牌与领域 → 流式生成探针问题（逐 token 可视）→ 每条问题安全护栏标记 → 触发 GEO 分析并展示结果；</li>
+<li><b>探针问题库</b>：真实问题对浏览，支持关键词搜索、类型筛选、类型分布图，逐条展开评估指标与改写问题；</li>
+<li><b>AI 回答洞察</b>：真实平台回答原文 + 品牌提及/排名状态 + 同场竞品排名；</li>
+<li><b>智能体编排</b>：8-Agent 三层流水线图，节点详情面板。</li>
+</ol>
+<h3>2.3 非功能需求</h3>
+<ul>
+<li><b>性能</b>：首屏不加载图表库（懒加载分割）；本地构建产物主包 32.6KB（gzip 11KB）；</li>
+<li><b>AI 可信</b>：演示模式必须明确标注数据来源，不冒充实时生成；LLM 失败自动降级；</li>
+<li><b>安全</b>：密钥仅经环境变量注入；品牌泄露在服务端与客户端双重校验；</li>
+<li><b>可复现</b>：所有页面数据可追溯至 <code>server/data</code> 中的真实产物文件。</li>
+</ul>
+
+<div class="pagebreak"></div>
+<h2>3. 系统架构设计</h2>
+<h3>3.1 总体架构</h3>
+<pre>
+┌─────────────────────────────────────────────────────────┐
+│ 前端 SPA（React 18 + TS + Tailwind，Vite 构建）           │
+│  Dashboard │ Audit │ Questions │ Answers │ Pipeline      │
+│  组件: ScoreRing(SVG) / StatTile / EChartsBox(懒加载)     │
+├────────────── REST /api/* ──────── SSE /api/generate ────┤
+│ AI 接入层（Express, server/index.mjs）                    │
+│  ├ 路由: brands / questions / geo / pipeline / analyze   │
+│  ├ llm.mjs: LLM 直连(OpenAI兼容) ⇄ 演示回放 双模式        │
+│  └ 安全: 服务端品牌泄露护栏 detectLeak()                   │
+├─────────────────────────────────────────────────────────┤
+│ 数据层: GEO 品牌监测系统真实运行产物(JSON)                 │
+│  questions_华为/君乐宝.json · geo_stats_*.json(真实聚合)   │
+└─────────────────────────────────────────────────────────┘</pre>
+<h3>3.2 前端工程架构</h3>
+<ul>
+<li><b>路由</b>：createBrowserRouter 嵌套路由 + App 布局壳（侧边导航 Outlet）；</li>
+<li><b>状态管理</b>：页面级状态用 useState/useMemo 足够（无全局状态污染），符合最小复杂度原则；</li>
+<li><b>代码分割</b>：echarts（1MB）通过 dynamic import 仅在图表组件挂载时加载，构建出独立 chunk；vendor 单独分包；</li>
+<li><b>类型契约</b>：<code>src/types.ts</code> 与接入层 JSON 字段一一对应，strict 模式编译通过。</li>
+</ul>
+<h3>3.3 AI 接入层设计</h3>
+<p>遵循"后端仅作为 AI 能力的接入层"的赛制要求，Express 承担三件事：<b>①SSE 流式代理</b>（浏览器同源访问，避免 CORS 与 Key 暴露）；<b>②双模式生成</b>（见 §4.1）；<b>③真实产物数据服务</b>（只读 JSON，含品牌、问题库、GEO 统计、流水线定义）。生产模式下同时托管 <code>dist/</code> 静态资源，单进程即可完整部署。</p>
+<h3>3.4 数据流设计</h3>
+<p><b>展示流</b>：页面挂载 → REST 拉取真实产物 → ECharts/SVG 渲染 → 用户交互（筛选/展开/切换品牌）纯前端完成；<b>生成流</b>：品牌体检页发起 SSE → 接入层逐 token 下发（meta → token* N → guard* N → complete）→ 前端增量解析 JSON 行渲染问题卡 → 用户触发 GEO 分析 → 返回真实统计或"需完整环境"说明。</p>
+
+<h2>4. AI 技术方案（重点）</h2>
+<h3>4.1 大模型接入：双模式设计</h3>
+<p><b>直连模式</b>：配置 <code>LLM_API_KEY / LLM_BASE_URL / LLM_MODEL</code> 即接入任意 OpenAI 兼容接口（DeepSeek / 通义千问 / GLM）。选型理由：国产模型性价比高、无需科学上网，接口协议事实标准化使切换成本为零。Prompt 沿用 GEO 系统生产级模板（含品牌匿名硬约束 + JSON Schema 输出约定 + 多样性要求）。</p>
+<p><b>演示回放模式</b>（默认，零 Key 可运行）：从真实历史产物中取该品牌问题，按 7 字符切片、18ms 间隔逐 token 下发——<b>流式交互体验与直连完全一致</b>，且页面明示"演示模式：回放真实生成结果"。该设计同时解决了三个工程问题：评委无 Key 可完整体验、录制演示视频不产生费用、LLM 故障时自动降级保可用。</p>
+<pre>
+// server/llm.mjs —— 双模式与自动降级
+export async function streamProbeQuestions(opts) {
+  if (process.env.LLM_API_KEY) {
+    try { return await streamFromLLM(opts) }        // 直连
+    catch (err) {
+      opts.send('meta', { mode:'demo-replay', fallback:true, reason:String(err) })
+      return await replayFromCorpus(opts)           // 降级回放
+    }
+  }
+  return await replayFromCorpus(opts)               // 默认演示
+}</pre>
+<h3>4.2 SSE 流式交互链路</h3>
+<p>选用 SSE 而非 WebSocket：生成场景是<b>单向服务端推送</b>，SSE 更轻量、自带断线语义、经 HTTP 代理无障碍。前端以 fetch + ReadableStream 手写帧解析（EventSource 不便携带查询参数与中止信号），支持 AbortController 中断、半包缓冲、不完整帧丢弃。生成中的光标动画、问题卡的 fadeUp 入场与逐条 guard 标记构成"AI 正在思考"的可见反馈。</p>
+<h3>4.3 AI 安全：品牌泄露双重护栏</h3>
+<p>探针问题的铁律是<b>绝不能出现品牌名或其任何别名</b>（否则测的是"引导联想"而非"自然联想"）。本作品实现了前后端双重护栏：</p>
+<pre>
+// 服务端（强制）：原名 + 拼音变体检测
+export function detectLeak(text, brand) {
+  const pinyin = { 华为:['huawei'], 君乐宝:['junlebao'], ... }
+  const hit = [brand.toLowerCase(), ...(pinyin[brand]||[])]
+              .filter(v => v.length>=2 && text.toLowerCase().includes(v))
+  return { leaked: hit.length>0, matched: hit }
+}
+// 前端（复检）：流式渲染的同时逐条 clientLeakCheck()</pre>
+<p>双端校验的意义：服务端护栏是安全底线；前端复检让用户<b>看得见</b>每条输出的安全状态（绿"安全"/红"泄露"徽标），把不可见的 AI 安全机制变成可见的产品交互。实测华为 46 问 + 249 改写、君乐宝 4 问 + 22 改写，泄露率 0.0。</p>
+<h3>4.4 Agent 编排可视化</h3>
+<p>「智能体编排」页将 LangGraph 状态机流水线映射为三层交互图（数据层 4 节点 / 生成层 3 节点 / 分析层 2 节点），节点数据来自接入层 <code>pipeline.json</code>（与后端真实实现文件一一对应），点击查看职责、真实产物、实现位置；<code>block_router</code> 条件循环以显式提示说明。它既是产品功能，也是对被衔接系统（Multi-Agent 架构）的<b>可交互技术文档</b>。</p>
+<h3>4.5 与训练模型的衔接（SFT/GRPO）</h3>
+<p>演示回放的语料来自 GEO 系统自研微调模型（Qwen2.5-7B-Instruct：SFT 8060 条样本、train_loss 0.331/eval_loss 0.347；GRPO 两轮奖励函数迭代后验证奖励 0.524→0.798）的真实输出。接入层若配置生产模型端点（vLLM 等 OpenAI 兼容服务），同一套 SSE 链路可无缝切换到自研模型推理——<b>前端零改动</b>。</p>
+
+<div class="pagebreak"></div>
+<h2>5. 核心功能实现</h2>
+<h3>5.1 监测总览仪表盘</h3>
+<p>品牌切换卡 → 四指标卡（提及率 98.6%、平均排名 No.2.67、综合评分 83.0、泄露率 0%）→ 排名分布横向条形图（前五 97.3% / 前三 58.9% / 第一 33.8%，ECharts）→ 五平台矩阵（有数据平台显示真实值，未运行平台优雅显示"待运行"而非空白）→ 情感环形图。数据：<code>GET /api/geo/华为</code>（Milvus 367 条真实记录聚合）。</p>
+<img src="../docs/images/web_dashboard.png" style="width:100%">
+<h3>5.2 品牌体检（流式生成）</h3>
+<p>输入品牌/领域 →「⚡生成探针问题」→ SSE 逐 token 流入终端风格输出区（含光标动画）→ 增量正则解析出问题卡（安全徽标 + 类型 + 目标实体）→「运行分析」展示该品牌真实 GEO 统计或环境说明。支持随时中止。</p>
+<img src="../docs/images/web_audit.png" style="width:100%">
+<h3>5.3 探针问题库</h3>
+<p>50 条真实问题对：类型分布环图 + 关键词/类型双筛选列表；逐条展开五项评估指标（品牌泄露/实体覆盖/完整性/自然度/有意义性）与全部改写问题、KG 实体标签。</p>
+<img src="../docs/images/web_questions.png" style="width:100%">
+<h3>5.4 AI 回答洞察</h3>
+<p>每条样本三栏布局：探针问题 + 提及/排名徽标；平台真实回答原文（提及次数、是否引用品牌官网）；品牌与竞品同场排名对比。</p>
+<img src="../docs/images/web_answers.png" style="width:80%;display:block;margin:8px auto">
+<h3>5.5 智能体编排页</h3>
+<p>三层流水线交互图，节点点击联动详情面板（职责描述 / 真实产物路径 / 实现文件）。</p>
+<img src="../docs/images/web_pipeline.png" style="width:100%">
+
+<div class="pagebreak"></div>
+<h2>6. 测试与部署</h2>
+<h3>6.1 构建与代码分割</h3>
+<pre>
+$ npm run build        # tsc -b（strict 全量类型检查）+ vite build
+dist/index.html         0.65 kB
+dist/assets/index.css  21.02 kB │ gzip  4.52 kB
+dist/assets/index.js   32.58 kB │ gzip 10.96 kB   ← 首屏主包
+dist/assets/vendor.js 205.98 kB │ gzip 67.22 kB
+dist/assets/echarts.js  1.04 MB │ gzip 346.46 kB   ← 懒加载chunk，首屏不请求
+✓ built in 3.23s</pre>
+<p><b>优化策略</b>：echarts 以 dynamic import 独立分包，仅当用户进入含图表页面才加载（路由级按需 + 组件级懒加载）；vendor 与业务代码分离，业务迭代不失效 vendor 缓存。</p>
+<h3>6.2 接口联调验证记录（真实执行）</h3>
+<table>
+<tr><th>验证项</th><th>方法</th><th>结果</th></tr>
+<tr><td>类型检查</td><td><code>tsc -b</code> strict 模式</td><td>✅ 0 错误</td></tr>
+<tr><td>REST 接口</td><td>curl 实测 /api/health、/brands、/geo/华为、/questions/君乐宝</td><td>✅ 返回真实数据（如提及率 0.9864、46 问）</td></tr>
+<tr><td>SSE 流</td><td>curl -N 实测 /api/generate/questions</td><td>✅ meta→token×N→guard 事件序列正确</td></tr>
+<tr><td>页面渲染</td><td>Headless Edge 截图 5 页面 + DOM 数据断言</td><td>✅ 98.6%/83.0/367/No.2.67 等真实数据全部渲染</td></tr>
+<tr><td>中文参数</td><td>encodeURIComponent 编码路由</td><td>✅ 正常（浏览器标准行为）</td></tr>
+</table>
+<h3>6.3 部署指引</h3>
+<ol>
+<li>本地：<code>npm install && npm run dev</code>（5173 前端 + 8787 接入层）；</li>
+<li>单进程生产：<code>npm run build && npm start</code>（Express 托管 dist，8787 一站式）；</li>
+<li>云端：任意 Node 容器平台（Render/Railway/Fly.io）一键部署，环境变量见 <code>.env.example</code>；</li>
+<li>密钥安全：API Key 仅经环境变量注入，仓库不含任何密钥（已 gitignore <code>.env</code>）。</li>
+</ol>
+
+<h2>7. 创新点说明</h2>
+<table>
+<tr><th>类别</th><th>创新点</th></tr>
+<tr><td>应用创新</td><td>把"GEO 品牌可见性"这一新兴需求做成<b>零门槛 Web 产品</b>：品牌方 3 分钟看懂 AI 时代的品牌竞争力</td></tr>
+<tr><td>交互创新</td><td>把 AI 安全"不可见的护栏"变成<b>可见的交互</b>：每条流式输出实时标注安全/泄露状态</td></tr>
+<tr><td>技术创新</td><td>LLM 双模式接入（直连⇄真实语料回放自动降级），零 Key 完整演示 + 故障自愈</td></tr>
+<tr><td>数据可信</td><td>全站数据 100% 来自真实运行产物（含自研 SFT/GRPO 模型输出），每处数字可溯源</td></tr>
+<tr><td>工程价值</td><td>Agent 编排可视化页 = 可交互的系统架构文档，前端即技术布道</td></tr>
+</table>
+
+<h2>8. 总结与展望</h2>
+<p>本作品以 React + TypeScript 现代前端工程为基座，构建了 AI Native 的品牌可见性监测平台：流式生成、安全护栏、真实数据可视化、Agent 编排四大能力均落在可演示、可复现的 Web 交互上。后续规划：①接入自研模型 vLLM 端点实现全链路自有推理；②五平台完整分析的可视化扩展（引用来源网络图）；③对比基线时间序列（品牌可见性周报）；④面向中小品牌的 SaaS 化多租户改造。</p>
+<div class="note"><b>数据真实性声明</b>：本作品页面展示的全部品牌数据（46+4 条探针问题对、367+26 条平台分析记录、全部评分与排名统计）均来自 GEO 品牌监测系统 2026 年 5 月真实运行产物，存放于 <code>server/data/</code> 可直接核验；演示回放模式在页面中明确标注，不冒充实时生成。</div>
+
+</body></html>
